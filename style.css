@@ -1,0 +1,236 @@
+:root {
+  --bg: #fffcf2;
+  --env-color: #f2cc8f;
+  --env-dark: #e0af61;
+  --text: #3d405b;
+  --pink: #ffafcc;
+  --yellow: #fefae0;
+  --green: #b5ead7;
+  --accent: #bc4749;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  background: var(--bg);
+  font-family: "Noto Sans Thai", sans-serif;
+  overflow: hidden;
+}
+.viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.decoration-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.floating-item {
+  position: absolute;
+  opacity: 0.5;
+  user-select: none;
+}
+
+#envelope-section {
+  z-index: 10;
+  position: relative;
+}
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  background: var(--env-color);
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+.envelope-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--env-color);
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 50%);
+  z-index: 2;
+}
+.flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--env-dark);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  transform-origin: top;
+  z-index: 4;
+}
+.wax-seal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.wax-seal {
+  width: 45px;
+  height: 45px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.tap-hint {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hbd-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  color: var(--text);
+  margin-bottom: 20px;
+  opacity: 0;
+  text-align: center;
+  transform: scale(0);
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.cake-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.85);
+  margin: 30px 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.cake-stage:active {
+  transform: scale(0.82);
+}
+
+.layer {
+  border-radius: 12px 12px 4px 4px;
+  box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform-origin: bottom;
+  pointer-events: none;
+}
+.layer-bottom {
+  width: 250px;
+  height: 100px;
+  background: var(--pink);
+  z-index: 1;
+}
+.layer-middle {
+  width: 180px;
+  height: 80px;
+  background: var(--yellow);
+  z-index: 2;
+  margin-bottom: -10px;
+}
+.layer-top {
+  width: 110px;
+  height: 60px;
+  background: var(--green);
+  z-index: 3;
+  margin-bottom: -10px;
+  position: relative;
+}
+
+.candle {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 40px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  opacity: 0;
+}
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 24px;
+  background: radial-gradient(#ffff00, #ff8c00);
+  border-radius: 50% 50% 20% 20%;
+}
+
+.instruction {
+  font-size: 1rem;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 25px;
+  border-radius: 30px;
+  opacity: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 40px;
+  pointer-events: none; /* ป้องกันการกดโดน text แทนเค้ก */
+}
+
+.smoke-container {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.smoke {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(180, 180, 180, 0.6);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+@media (min-width: 768px) {
+  .cake-stage {
+    transform: scale(1.2);
+    margin: 50px 0;
+  }
+  .hbd-title {
+    font-size: 6rem;
+    margin-bottom: 40px;
+  }
+}
