@@ -128,6 +128,15 @@ body {
   text-align: center;
   transform: scale(0);
   filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+  line-height: 1.2;
+}
+
+/* สไตล์ชื่อ P May */
+.sub-name {
+  font-size: 2.5rem;
+  opacity: 0.9;
+  display: block;
+  margin-top: 5px;
 }
 
 .cake-stage {
@@ -204,7 +213,7 @@ body {
   opacity: 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   margin-top: 40px;
-  pointer-events: none; /* ป้องกันการกดโดน text แทนเค้ก */
+  pointer-events: none;
 }
 
 .smoke-container {
@@ -230,7 +239,10 @@ body {
     margin: 50px 0;
   }
   .hbd-title {
-    font-size: 6rem;
+    font-size: 5.5rem;
     margin-bottom: 40px;
+  }
+  .sub-name {
+    font-size: 4rem;
   }
 }
